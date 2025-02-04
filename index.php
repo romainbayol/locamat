@@ -55,8 +55,8 @@ function getNextAvailableDate($pdo, $id_materiel) {
     return "Disponible à partir du " . $lastEnd->format("d/m/Y");
 }
 
-foreach ($equipements as &$equipement) {
-    $equipement['disponibilite'] = getNextAvailableDate($pdo, $equipement['id_materiel']);
+foreach ($equipements as $index => $equipement) {
+    $equipements[$index]['disponibilite'] = getNextAvailableDate($pdo, $equipement['id_materiel']);
 }
 
 function truncateDescription($text, $limit = 100) {
